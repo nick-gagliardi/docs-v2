@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "items": {
+    "s_70da446d33": {
+      "langs": {
+        "text": "main/snippets/s_70da446d33/text.txt"
+      },
+      "createdFrom": [
+        {
+          "filePath": "main/docs/libraries/acul/react-sdk/API-Reference/Screens/accept-invitation/index.mdx",
+          "startLine": 44,
+          "endLine": 59
+        }
+      ],
+      "hash": "70da446d33ad5a40e3c4734447741015bc725fe56daf0f4801e2f19f406228ea"
+    }
+  }
+}

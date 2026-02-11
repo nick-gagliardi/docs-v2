@@ -1,0 +1,14 @@
+</ParamField>
+
+<ParamField body='useOrganization' type={<span>() =&gt; <a href="/docs/libraries/acul/react-sdk/API-Reference/Types/interfaces/OrganizationMembers">OrganizationMembers</a></span>}>
+
+Hook to access organization context and settings.
+
+```jsx Example
+import { useOrganization } from '@auth0/auth0-acul-react/login-id';
+function OrgSelector() {
+  const organization = useOrganization();
+  if (!organization) {
+    return <p>No organization context</p>;
+  }
+}
