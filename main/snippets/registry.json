@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "items": {
+    "s_11e0d78612": {
+      "langs": {
+        "text": "main/snippets/s_11e0d78612/text.txt"
+      },
+      "createdFrom": [
+        {
+          "filePath": "main/docs/libraries/acul/react-sdk/API-Reference/Screens/accept-invitation/index.mdx",
+          "startLine": 19,
+          "endLine": 32
+        }
+      ],
+      "hash": "11e0d78612d0e4d03c198dbe567984fc733b095f2b3da98e01f2bf4a754ddf8a"
+    }
+  }
+}
