@@ -1,6 +1,7 @@
 ---
 description: Describes the SAML identity provider configuration settings.
 title: SAML Identity Provider Configuration Settings
+validatedOn: 2026-07-27
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
@@ -160,11 +161,11 @@ if ($err) {
 ```python Python
 import http.client
 
-conn = http.client.HTTPSConnection("")
+conn = http.client.HTTPSConnection("{yourDomain}")
 
 headers = { 'authorization': "Bearer {yourAccessToken}" }
 
-conn.request("GET", "/{yourDomain}/api/v2/connections/%7ByourConnectionID%7D", headers=headers)
+conn.request("GET", "/api/v2/connections/{yourConnectionID}", headers=headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -213,7 +214,7 @@ dataTask.resume()
 ```
 </AuthCodeGroup>
 
-Replace the `ACCESS_TOKEN` header value, with a Management APIv2 <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>.
+Replace the `{yourAccessToken}` value in the `authorization` header with a Management API v2 <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>.
 
 ### SAML Request Binding
 
@@ -269,11 +270,11 @@ SAML logout requests must be signed by the identity provider.
 
 Use the following links to obtain the public key in different formats:
 
-* <AuthLink href="https://{yourDomain}/cer?cert=connection">CER</AuthLink>
-* <AuthLink href="https://{yourDomain}/pem?cert=connection">PEM</AuthLink>
-* <AuthLink href="https://{yourDomain}/rawpem?cert=connection">raw PEM</AuthLink>
-* <AuthLink href="https://{yourDomain}/pb7?cert=connection">PKCS#7</AuthLink>
-* <AuthLink href="https://{yourDomain}/fingerprint?cert=connection">Fingerprint</AuthLink>
+* [CER](https://{yourDomain}/pem?cert=connection&format=cer)
+* [PEM](https://{yourDomain}/pem?cert=connection&format=pem)
+* [raw PEM](https://{yourDomain}/pem?cert=connection&format=rawpem)
+* [PKCS#7](https://{yourDomain}/pem?cert=connection&format=pkcs7)
+* [Fingerprint](https://{yourDomain}/pem?cert=connection&format=fingerprint)
 
 Download the certificate in the format requested by the IdP.
 
@@ -291,7 +292,7 @@ export const codeExample14 = `https://{yourDomain}/samlp/metadata?connection={yo
 
 ## Organizations
 
-Use the ACS URL for your organization in the federated IdP to start the Organizations login flow.
+Use the ACS URL (post-back URL) for your organization in the federated IdP to start the Organizations login flow. The ACS URL is `https://{yourDomain}/login/callback`. To start the flow, use the following login URL with your connection and organization parameters:
 
 export const codeExample15 = `https://{yourDomain}/samlp?connection={yourConnectionName}&organization={yourOrgID}`;
 
