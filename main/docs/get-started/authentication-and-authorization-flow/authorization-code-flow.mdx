@@ -2,10 +2,11 @@
 description: Learn how the Authorization Code flow works and why you should use it for regular web apps.
 sidebarTitle: Overview
 title: Authorization Code Flow
+validatedOn: 2026-08-11
 ---
 The Authorization Code Flow (defined in [OAuth 2.0 RFC 6749, section 4.1](https://tools.ietf.org/html/rfc6749#section-4.1)), involves exchanging an authorization code for a token.
 
-This flow can only be used for confidential applications (such as Regular Web Applications) because the application's authentication methods are included in the exchange and must be kept secure.
+Without Proof Key for Code Exchange (PKCE), this flow can only be used for confidential applications (such as Regular Web Applications) because the application's credentials (such as a client secret or Private Key JWT) are included in the exchange and must be kept secure. For public applications, such as native or single-page apps, use the Authorization Code Flow with PKCE instead.
 
 ## How Authorization Code Flow works
 
@@ -14,9 +15,9 @@ This flow can only be used for confidential applications (such as Regular Web Ap
 1. User selects **Login** within application.
 2. Auth0's SDK redirects user to Auth0 Authorization Server ([`/authorize`](https://auth0.com/docs/api/authentication/authorization-code-flow/authorize-application) endpoint).
 3. Auth0 Authorization Server redirects user to login and authorization prompt.
-4. User authenticates using one of the configured login options, and may see a consent prompt listing the permissions Auth0 will give to the application.
+4. User authenticates using one of the configured login options, and may see a [consent prompt](/docs/get-started/apis/user-consent-and-third-party-applications) listing the permissions Auth0 will give to the application.
 5. Auth0 Authorization Server redirects user back to application with single-use authorization code.
-6. Auth0's SDK sends authorization code, application's client ID, and application's credentials, such as client secret or Private Key JWT, to Auth0 Authorization Server ([`/oauth/token`](https://auth0.com/docs/api/authentication/authorization-code-flow/get-token) endpoint).
+6. Auth0's SDK sends authorization code, application's client ID, and application's credentials, such as client secret or [Private Key JWT](/docs/get-started/applications/configure-private-key-jwt), to Auth0 Authorization Server ([`/oauth/token`](https://auth0.com/docs/api/authentication/authorization-code-flow/get-token) endpoint).
 7. Auth0 Authorization Server verifies authorization code, application's client ID, and application's credentials.
 8. Auth0 Authorization Server responds with an ID token and access token (and optionally, a refresh token).
 9. Application can use the access token to call an API to access information about the user.
@@ -36,8 +37,7 @@ If a browser application, with an Origin header, makes a `POST` request to the `
 
 ## Learn more
 
-* [Auth0 Rules](/docs/customize/rules)
-* [Auth0 Hooks](/docs/customize/hooks)
+* [Auth0 Actions](/docs/customize/actions)
 * [Tokens](/docs/secure/tokens)
 * [Token Best Practices](/docs/secure/tokens/token-best-practices)
 * [Which OAuth 2.0 Flow Should I Use?](/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
